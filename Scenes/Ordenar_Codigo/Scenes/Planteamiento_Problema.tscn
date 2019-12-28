@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Ordenar_Codigo/Scripts/Planteamiento_Problema.gd" type="Script" id=1]
+[ext_resource path="res://Common/Fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://Common/Fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=3]
+
+
+
+
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.529412, 0.498039, 0.227451, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+outline_size = 4
+outline_color = Color( 0.478431, 0.0901961, 0.0901961, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.776471, 0.756863, 0.207843, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFont" id=4]
+size = 45
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 1
+extra_spacing_space = 2
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 55
+outline_size = 8
+outline_color = Color( 0.207843, 0.360784, 0.576471, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Planteamiento_Problema" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 720.0
+margin_bottom = 1440.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Objetivo" type="Label" parent="Panel"]
+margin_left = 230.0
+margin_top = 50.0
+margin_right = 494.0
+margin_bottom = 111.0
+custom_fonts/font = SubResource( 2 )
+text = "Objetivo:"
+align = 1
+
+[node name="Panel" type="Panel" parent="Panel"]
+margin_left = 30.0
+margin_top = 190.0
+margin_right = 690.0
+margin_bottom = 1190.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="Problema" type="Label" parent="Panel/Panel"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 640.0
+margin_bottom = 970.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 4 )
+autowrap = true
+
+[node name="Empezar" type="Button" parent="Panel"]
+margin_left = 250.0
+margin_top = 1280.0
+margin_right = 472.0
+margin_bottom = 1342.0
+custom_fonts/font = SubResource( 5 )
+text = "Empezar"
+flat = true
+[connection signal="pressed" from="Panel/Empezar" to="." method="_on_Empezar_pressed"]
