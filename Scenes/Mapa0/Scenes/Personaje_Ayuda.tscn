@@ -6,7 +6,7 @@
 [ext_resource path="res://Scenes/Mapa0/Textures/Bubble.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Mapa0/Resources/Font_Texto.tres" type="DynamicFont" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Personaje"
 length = 0.5
 tracks/0/type = "value"
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ Vector2( 190, 1641.11 ), Vector2( 190, 1229.68 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Texto"
 length = 0.5
 tracks/0/type = "value"
@@ -50,7 +50,7 @@ tracks/1/keys = {
 "values": [ Vector2( 190.445, 1055 ), Vector2( 2, 780 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
@@ -62,13 +62,13 @@ animations = [ {
 script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Personaje = SubResource( 2 )
-anims/Texto = SubResource( 3 )
+anims/Personaje = SubResource( 1 )
+anims/Texto = SubResource( 2 )
 
 [node name="Personaje" type="AnimatedSprite" parent="."]
 position = Vector2( 190, 1229.68 )
 scale = Vector2( 10, 10 )
-frames = SubResource( 1 )
+frames = SubResource( 3 )
 animation = "Personaje"
 
 [node name="Control" type="Control" parent="."]

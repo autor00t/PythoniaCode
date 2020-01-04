@@ -1,5 +1,6 @@
 extends Node
 
+
 func _ready():
 	yield(get_tree().create_timer(1), "timeout")
 	$Animacion_Carta.playing = true
@@ -26,3 +27,4 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 		$AnimationPlayer.play_backwards("Mail")
 		yield(get_node("AnimationPlayer"), "animation_finished")
 		$".".queue_free()
+		get_tree().change_scene("res://Scenes/Mapa0/Scenes/Mapa0.tscn")
