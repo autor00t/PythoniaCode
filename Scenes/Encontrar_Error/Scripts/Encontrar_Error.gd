@@ -15,9 +15,8 @@ var lineas_codigo = [
 var resultado_error = "SyntaxError: invalid syntax"
 #La variable texto es una string en la cual se plantea el enunciado
 var texto = "Se tiene una función que retorna el mayor número de los parametros ingresados para luego usar esta función en el programa.\nPero hay un error, encuentralo!"
-
-
 var linea_error = 1
+
 var linea_seleccionada
 onready var contenedor = $UI/Panel/VBoxContainer
 var temp_resource_linea = preload("res://Scenes/Encontrar_Error/Scenes/Linea.tscn")
@@ -29,6 +28,7 @@ signal salir_mapa
 signal salir_menu
 
 func _ready():
+	$AnimationPlayer.play("Iniciar")
 	for linea in lineas_codigo:
 		var temp = temp_resource_linea.instance()
 		contenedor.add_child(temp)
@@ -78,11 +78,12 @@ func _process(delta):
 	
 	if desafio_resuelto:
 		if error_encontrado.MapaPressed():
+			$AnimationPlayer.play_backwards("Iniciar")
+			queue_free()
 			emit_signal("salir_mapa")
-			queue_free()
 		if error_encontrado.MenuPressed():
+			$AnimationPlayer.play_backwards("Iniciar")
 			emit_signal("salir_menu")
-			queue_free()
 
 func _on_Button_pressed():
 	if linea_seleccionada == linea_error:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Ordenar_Codigo/Scripts/Ordenar_Codigo.gd" type="Script" id=1]
 [ext_resource path="res://Common/Fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
@@ -57,6 +57,34 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Iniciar"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Planteamiento_Problema:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Codigo_Ordenado:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Ordenar_Codigo" type="Node"]
@@ -142,6 +170,7 @@ margin_bottom = 550.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Empezar = SubResource( 3 )
+anims/Iniciar = SubResource( 4 )
 [connection signal="pressed" from="UI/Arriba" to="." method="_on_Arriba_pressed"]
 [connection signal="pressed" from="UI/Abajo" to="." method="_on_Abajo_pressed"]
 [connection signal="pressed" from="UI/Izquierda" to="." method="_on_Izquierda_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Encontrar_Error/Scripts/Encontrar_Error.gd" type="Script" id=1]
 [ext_resource path="res://Common/Fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
@@ -59,6 +59,46 @@ tracks/2/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0.266667, 0.266667, 0.266667, 1 ), Color( 0.576471, 0.576471, 0.576471, 1 ), Color( 0.807843, 0.807843, 0.807843, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Iniciar"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Error_Encontrado:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Planteamiento_Problema:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Encontrar_Error" type="Node"]
 script = ExtResource( 1 )
 
@@ -116,5 +156,6 @@ margin_bottom = 640.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Empezar = SubResource( 3 )
+anims/Iniciar = SubResource( 4 )
 [connection signal="pressed" from="UI/Button" to="." method="_on_Button_pressed"]
 [connection signal="empezar" from="Planteamiento_Problema" to="." method="_on_Planteamiento_Problema_empezar"]

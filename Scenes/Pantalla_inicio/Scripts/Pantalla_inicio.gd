@@ -14,8 +14,6 @@ func _ready():
 
 func _on_NuevaPartida_pressed():
 	emit_signal("nuevaPartida")
-	$".".queue_free()
 
 func _on_Continuar_pressed():
 	emit_signal("continuar")
-	$".".queue_free()

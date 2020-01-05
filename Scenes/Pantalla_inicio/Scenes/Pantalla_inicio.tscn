@@ -47,7 +47,7 @@ anims/Titulo = SubResource( 1 )
 show_behind_parent = true
 position = Vector2( 360, 720 )
 scale = Vector2( 2.8125, 2.8125 )
-frame = 0
+frame = 3
 
 [node name="Titulo" type="Sprite" parent="."]
 position = Vector2( 360, 270 )

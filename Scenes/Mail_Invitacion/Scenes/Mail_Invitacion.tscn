@@ -33,7 +33,7 @@
 [ext_resource path="res://Scenes/Mail_Invitacion/Textures/verde.png" type="Texture" id=31]
 [ext_resource path="res://Scenes/Mail_Invitacion/Textures/amarillo.png" type="Texture" id=32]
 [ext_resource path="res://Common/Fonts/Philosopher-Regular.ttf" type="DynamicFontData" id=33]
-[ext_resource path="res://Scenes/Mail_Invitacion/Textures/flecha.png" type="Texture" id=34]
+[ext_resource path="res://Common/Textures/flecha.png" type="Texture" id=34]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Carta"

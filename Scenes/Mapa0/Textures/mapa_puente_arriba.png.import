@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flecha.png-692824e9f296677498a62e838a53bd4b.stex"
+path="res://.import/mapa_puente_arriba.png-8c19b9f2537859b620912f8e05a69bc4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Mail_Invitacion/Textures/flecha.png"
-dest_files=[ "res://.import/flecha.png-692824e9f296677498a62e838a53bd4b.stex" ]
+source_file="res://Scenes/Mapa0/Textures/mapa_puente_arriba.png"
+dest_files=[ "res://.import/mapa_puente_arriba.png-8c19b9f2537859b620912f8e05a69bc4.stex" ]
 
 [params]
 

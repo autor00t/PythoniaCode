@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mapa.png-c60119cadb37cdb6340719a1554c0a46.stex"
+path="res://.import/mapa_puente_abajo.png-fc7dbbb956779070222ca03beecee9fc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Mapa0/Textures/mapa.png"
-dest_files=[ "res://.import/mapa.png-c60119cadb37cdb6340719a1554c0a46.stex" ]
+source_file="res://Scenes/Mapa0/Textures/mapa_puente_abajo.png"
+dest_files=[ "res://.import/mapa_puente_abajo.png-fc7dbbb956779070222ca03beecee9fc.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/puente_arriba.png-473e5091db2b240d8b2ce51f59073491.stex"
+path="res://.import/flecha.png-0b5b53276060a7c74766b5d5643aae9b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Mapa0/Textures/puente_arriba.png"
-dest_files=[ "res://.import/puente_arriba.png-473e5091db2b240d8b2ce51f59073491.stex" ]
+source_file="res://Common/Textures/flecha.png"
+dest_files=[ "res://.import/flecha.png-0b5b53276060a7c74766b5d5643aae9b.stex" ]
 
 [params]
 

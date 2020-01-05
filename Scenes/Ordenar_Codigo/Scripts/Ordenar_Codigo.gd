@@ -66,6 +66,7 @@ func QuitarEspacios(linea):
 	return temp
 
 func _ready():
+	$AnimationPlayer.play("Iniciar")
 	randomize()
 	codigo_desordenado = codigo_ordenado.duplicate()
 	codigo_desordenado.shuffle()
