@@ -32,3 +32,4 @@ func load_game():
 				var next_level = next_level_resource.instance()
 				next_level.saved_nivel = current_line["nivel"]
 				$".".add_child(next_level)
+	save_game.close()

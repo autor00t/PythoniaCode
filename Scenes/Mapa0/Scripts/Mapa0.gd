@@ -26,30 +26,29 @@ var saved_nivel = -1
 
 var texto_gasolinera = [
 	"En tu primer paso por salvar el mundo, deberás arreglar el sistema del auto que permite calcular el costo del combustible en base a tres parámetros:\n- Distancia (en km)\n- Rendimiento del auto (en km/litro)\n- Costo de un litro de combustible",
-	"Bueno, empecemos con lo básico. Los aparatos usados en Pythonia funcionan con códigos hechos en Python. Tal vez ya conozcas algunas de las cosas que te nombre a continuación.\nAquí encontrarás variablesdel tipo:\n- Numérico (Int o float)\n- Texto (String)\n- Bandera (Flag)",
+	"Bueno, empecemos con lo básico. Los aparatos usados en Pythonia funcionan con códigos hechos en Python. Tal vez ya conozcas algunas de las cosas que te nombre a continuación.\nAquí encontrarás variables del tipo:\n- Numérico (Int o float)\n- Texto (String)\n- Bandera (Flag)",
 	"En el código también encontrarás líneas que contengan:\n- Entradas (Líneas en las que debes escribir algo para ejecutar el programa)\n- Salidas (Respuestas que el programa entrega)\n- Funciones (Procedimientos especiales que tú puedes especificar)\n- Listas (Estructuras de datos que presentan elementos dentro de esta. Las listas tienen la cualidad de poder alterarse)\n- Tuplas (Estructuras de datos que presentan elementos dentro de esta. Las tuplas no pueden ser alteradas)"
 ]
 	
 var texto_gim = [
-	"Hemos recibido reclamos de los clientes delos distintos gimnasios que hay alrededor de la ciudad y el campo. Las máquinascalculan el Índicede Masa Corporal (IMC)de forma automática están fallando. Todas lasmáquinas están conectadas a una red que les brinda el programa para funcionar, esto significa que basta con arreglar una máquina para que el código se expanda por la red y llegue a los demás gimnasios de la zona.",
-	"Para poder arreglar el código de forma remota debo darte un permiso para poder modificar el código desde una máquina. Cuandolohayas reparado y el códigohayallegado a las demás máquinas a través de la red, revocaréel permiso, de esta forma, si alguien modifica el código de unaparatopor casualidad (o intencionalmente)no afectará a ninguna máquina más y la red puede detectar el cambio anómalo y restaurará el códigocorrecto.",
-	"Creo que ahora es un momento importante para que te recuerde que son los condicionales. Los condicionales son caminos que el código toma dependiendo de las condiciones que se den.  El condicional que se usa es if, y como su nombre dice, da una condición(o más de una)al programa. Las líneas que determinen lo que se hará cuando una condición se cumpla deberán ir indentadas.",
-	"Para poder resolver este problema recuerda que el IMC es una fórmula que utiliza la altura(en metros)y peso(en kilos)de una persona y luego lo clasifica dependiendo del número que resulte al dividir el peso en la estatura al cuadrado. Como pueden ocurrir casos en los que el númerotenga muchos decimales, haremos que el programa redondee todos los números a 2 decimales. Mucha suerte."
+	"Hemos recibido reclamos de los clientes de los distintos gimnasios que hay alrededor de la ciudad y el campo. Las máquinas calculan el Índice de Masa Corporal (IMC) de forma automática están fallando. Todas las máquinas están conectadas a una red que les brinda el programa para funcionar, esto significa que basta con arreglar una máquina para que el código se expanda por la red y llegue a los demás gimnasios de la zona.",
+	"Para poder arreglar el código de forma remota debo darte un permiso para poder modificar el código desde una máquina. Cuando lo hayas reparado y el código haya llegado a las demás máquinas a través de la red, revocaré el permiso, de esta forma, si alguien modifica el código de un aparato por casualidad (o intencionalmente) no afectará a ninguna máquina más y la red puede detectar el cambio anómalo y restaurará el código correcto.",
+	"Creo que ahora es un momento importante para que te recuerde que son los condicionales. Los condicionales son caminos que el código toma dependiendo de las condiciones que se den.  El condicional que se usa es if, y como su nombre dice, da una condición (o más de una) al programa. Las líneas que determinen lo que se hará cuando una condición se cumpla deberán ir indentadas.",
+	"Para poder resolver este problema recuerda que el IMC es una fórmula que utiliza la altura (en metros) y peso (en kilos) de una persona y luego lo clasifica dependiendo del número que resulte al dividir el peso en la estatura al cuadrado. Como pueden ocurrir casos en los que el número tenga muchos decimales, haremos que el programa redondee todos los números a 2 decimales. Mucha suerte."
 ]
 
 var texto_tienda = [
-	"Cerca de donde estás hay una tienda que abastece a todas las familias del sector con alimentos y otros productos. Hace años, me contactaron para pedir que hiciera un programa que pudiera acelerar el proceso de ventasen su tienda;si bien el programa es un poco anticuado, los dueños lo querían de esa forma. Minutos atrás, me volvieron a contactar porque el programa de la tienda ha fallado, seguramente debido al virus. Necesito que te dirijas a la tienda y lo repares.Esperaba que el virus solo atacara a sistemas a gran escala,pero me sorprende que también haya atacado a sistemas pequeños como el de esta tienda.",
+	"Cerca de donde estás hay una tienda que abastece a todas las familias del sector con alimentos y otros productos. Hace años, me contactaron para pedir que hiciera un programa que pudiera acelerar el proceso de ventas en su tienda; si bien el programa es un poco anticuado, los dueños lo querían de esa forma. Minutos atrás, me volvieron a contactar porque el programa de la tienda ha fallado, seguramente debido al virus. Necesito que te dirijas a la tienda y lo repares. Esperaba que el virus solo atacara a sistemas a gran escala, pero me sorprende que también haya atacado a sistemas pequeños como el de esta tienda.",
 	"Antes de que resuelvas este problema dejame acordarte de lo que son los ciclos. Los ciclos se utilizan para repetir ciertas partes de un código hasta que se cumpla una condición preestablecida. El ciclo utilizado aquí se llama while. Las líneas que dictan el comportamiento del ciclo deben ir indentadas, es decir, deben tener un espacio antes de escribir en esa línea."
 ]
 
 var texto_puente = [
-	"Nos hemos dado cuenta de que el puente Py Py también se vio afectado por el virus y se quedó levantado hasta la mitad, como si el puentese hubiera construido mal. Necesito que vayas allá de inmediato, hay mucha gente que vive en el campo y va a trabajar a la ciudad que necesita el puente funcionando."	
+	"Nos hemos dado cuenta de que el puente Py Py también se vio afectado por el virus y se quedó levantado hasta la mitad, como si el puente se hubiera construido mal. Necesito que vayas allá de inmediato, hay mucha gente que vive en el campo y va a trabajar a la ciudad que necesita el puente funcionando."	
 ]
 
 func mostrar_texto():
 	$Control/Panel.visible = true
 	$AnimationPlayer.play("panel")
-	seleccionado = true
 	if problema == 0:
 		$Control/Panel/Label.text = texto_gasolinera[0]
 	elif problema == 1:
@@ -87,6 +86,15 @@ func _ready():
 	$AnimationPlayer.play("Entrada")
 
 func _process(delta):
+	if Input.is_action_pressed("ui_unlock"):
+		save_game(3)
+		punto2 = true
+		punto3 = true
+		punto4 = true
+		siguiente_mapa = true
+		$Control/fondo_arriba.visible = false
+		$Control/fondo_abajo.visible = true
+	
 	if !seleccionado:
 		if follow.get_offset() < position:
 			avanzando = true
@@ -156,8 +164,8 @@ func _process(delta):
 				ordenar_codigo_node.codigo_ordenado = [
 					"estatura=float(input())",
 					"peso=float(input())",
-					"imc=round(peso/(estatura**2),2)",
-					"print(imc)",
+					"imc=peso/(estatura**2)",
+					"print(round(imc,2))",
 					"if imc<18.50:",
 					'    print("Delgadez")',
 					"elif imc<25.00:",
@@ -165,14 +173,14 @@ func _process(delta):
 					"else:",
 					'    print("Sobrepeso")'
 				]
-				ordenar_codigo_node.texto = "A partir de su estatura y peso, se debe determinar el IMC de una persona e indicar si está en un estado Normal, de Delgadez ode Sobrepeso.\n Utilice la siguiente clasificación como referencia:\n- Delgadez:<18.50<18.50\n- Normal:18.50−24.9918.50−24.99\n- Sobrepeso:⩾25.00\nEl problema del programa es que esta desordenaod, ordenalo!"
+				ordenar_codigo_node.texto = "A partir de su estatura y peso, se debe determinar el IMC de una persona e indicar si está en un estado Normal, de Delgadez ode Sobrepeso.\n Utilice la siguiente clasificación como referencia:\n- Delgadez:<18.50<18.50\n- Normal:18.50−24.9918.50−24.99\n- Sobrepeso:⩾25.00\nEl problema del programa es que esta desordenado, ordenalo!"
 				ordenar_codigo_node.cantidad_maxima_saltos = 1
 				ordenar_codigo_node.mas_opciones = true
 				ordenar_codigo_node.opciones_codigo_ordenado = [[
 					"peso=float(input())",
 					"estatura=float(input())",
-					"imc=round(peso/(estatura**2),2)",
-					"print(imc)",
+					"imc=peso/(estatura**2)",
+					"print(round(imc,2))",
 					"if imc<18.50:",
 					'    print("Delgadez")',
 					"elif imc<25.00:",
@@ -201,7 +209,7 @@ func _process(delta):
 			if vineta >= len(texto_tienda):
 				$AnimationPlayer.play_backwards("Entrada")
 				var encontrar_error_node = encontrar_error.instance()
-				encontrar_error_node.texto = "Hay una tienda en el campo que tiene un sistema el cualpregunta por el producto a comprar y su precio, también pregunta al cliente si desea algo más que llevar. Cuando el cliente no desea llevar nada más, el programa muestra el precio total que hay que pagar. Pero hay un error, encuéntralo!"
+				encontrar_error_node.texto = "Hay una tienda en el campo que tiene un sistema el cual pregunta por el producto a comprar y su precio, también pregunta al cliente si desea algo más que llevar. Cuando el cliente no desea llevar nada más, el programa muestra el precio total que hay que pagar. Pero hay un error, encuéntralo!"
 				encontrar_error_node.lineas_codigo = [
 				'1. producto=input()',
 				'2. precio=int(input())',
@@ -303,6 +311,7 @@ func _on_numero4_input_event(viewport, event, shape_idx):
 func _on_ticket_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed():
 		if not seleccionado:
+			seleccionado = true
 			var node = scene.instance()
 			add_child(node)
 			node.connect("done", self, "mostrar_texto")
@@ -327,7 +336,6 @@ func _on_Flecha2_input_event(viewport, event, shape_idx):
 func salir_mapa():
 	if problema > saved_nivel:
 		save_game(problema)
-		print("se guardo")
 	var next_level_resource = load("res://Scenes/Mapa0/Scenes/Mapa0.tscn")
 	var next_level = next_level_resource.instance()
 	if problema > saved_nivel:
@@ -339,7 +347,6 @@ func salir_mapa():
 func salir_menu():
 	if problema > saved_nivel:
 		save_game(problema)
-		print("se guardo")
 	get_tree().change_scene("res://Scenes/Pantalla_inicio/Scenes/Pantalla_inicio.tscn")
 	
 func save_game(nivel):
