@@ -46,6 +46,51 @@ var texto_puente = [
 	"Nos hemos dado cuenta de que el puente Py Py también se vio afectado por el virus y se quedó levantado hasta la mitad, como si el puente se hubiera construido mal. Necesito que vayas allá de inmediato, hay mucha gente que vive en el campo y va a trabajar a la ciudad que necesita el puente funcionando."	
 ]
 
+func encontrar_error(texto, lineas_codigo, linea_error, resultado_error):
+	$AnimationPlayer.play_backwards("Entrada")
+	var encontrar_error_node = encontrar_error.instance()
+	encontrar_error_node.texto = texto #String que dice el objetivo
+	encontrar_error_node.lineas_codigo = lineas_codigo #lista con cada elemento una linea (parte con i. cada linea, siendo i el número de la linea)
+	encontrar_error_node.linea_error = linea_error #numero de la linea que presenta el error
+	encontrar_error_node.resultado_error = resultado_error #resultado que arroja python al ejecutar el programa con el error
+	
+	encontrar_error_node.connect("salir_mapa", self, "salir_mapa")
+	encontrar_error_node.connect("salir_menu", self, "salir_menu")
+	
+	var level0 = $".".get_node("Control")
+	var level1 = $".".get_node("AnimationPlayer")
+	$".".remove_child(level0)
+	$".".remove_child(level1)
+	level0.call_deferred("free")
+	level1.call_deferred("free")
+	
+	$".".add_child(encontrar_error_node)
+	
+	corriendo_problema = true
+
+func ordenar_codigo(codigo_ordenado, texto, cantidad_maxima_saltos, mas_opciones, opciones_codigo_ordenado):
+	$AnimationPlayer.play_backwards("Entrada")
+	var ordenar_codigo_node = ordenar_codigo.instance()
+	ordenar_codigo_node.texto = texto #String que dice el objetivo
+	ordenar_codigo_node.codigo_ordenado = codigo_ordenado #lista con cada elemento una linea
+	ordenar_codigo_node.cantidad_maxima_saltos = cantidad_maxima_saltos #La mayor cantidad de saltos en el codigo
+	ordenar_codigo_node.mas_opciones = mas_opciones #booleano que dice si existen más opciones
+	ordenar_codigo_node.opciones_codigo_ordenado = opciones_codigo_ordenado #lista en donde cada elemento es una opcion de codigo (mismo formato codigo_ordenado)
+	
+	ordenar_codigo_node.connect("salir_mapa", self, "salir_mapa")
+	ordenar_codigo_node.connect("salir_menu", self, "salir_menu")
+	
+	var level0 = $".".get_node("Control")
+	var level1 = $".".get_node("AnimationPlayer")
+	$".".remove_child(level0)
+	$".".remove_child(level1)
+	level0.call_deferred("free")
+	level1.call_deferred("free")
+	
+	$".".add_child(ordenar_codigo_node)
+	
+	corriendo_problema = true
+
 func mostrar_texto():
 	$Control/Panel.visible = true
 	$AnimationPlayer.play("panel")
@@ -128,40 +173,24 @@ func _process(delta):
 			$Control/Panel/Flecha2.visible = true
 		if problema == 0:
 			if vineta >= len(texto_gasolinera):
-				$AnimationPlayer.play_backwards("Entrada")
-				var encontrar_error_node = encontrar_error.instance()
-				encontrar_error_node.texto = "El programa debe calcular el costo total de un viaje en auto, considerando como entradas la distancia en Kms, el rendimiento del auto en Kms/litro y el costo de cada litro de combustible. Pero hay un error, encuentralo!"
-				encontrar_error_node.lineas_codigo = [
+				var texto = "El programa debe calcular el costo total de un viaje en auto, considerando como entradas la distancia en Kms, el rendimiento del auto en Kms/litro y el costo de cada litro de combustible. Pero hay un error, encuentralo!"
+				var lineas_codigo = [
 				"1. d=float(input())",
 				"2. k=float(input())",
 				"3. c=float(input()",
 				"4. C=(d/k)*c",
 				"5. print(C)"
 				]
-				encontrar_error_node.linea_error = 3
-				encontrar_error_node.resultado_error = "SyntaxError: invalid syntax"
+				var linea_error = 3
+				var resultado_error = "SyntaxError: invalid syntax"
 				
-				encontrar_error_node.connect("salir_mapa", self, "salir_mapa")
-				encontrar_error_node.connect("salir_menu", self, "salir_menu")
-				
-				var level0 = $".".get_node("Control")
-				var level1 = $".".get_node("AnimationPlayer")
-				$".".remove_child(level0)
-				$".".remove_child(level1)
-				level0.call_deferred("free")
-				level1.call_deferred("free")
-				
-				$".".add_child(encontrar_error_node)
-				
-				corriendo_problema = true
+				encontrar_error(texto, lineas_codigo, linea_error, resultado_error)
 				
 			else:
 				$Control/Panel/Label.text = texto_gasolinera[vineta]
 		elif problema == 1:
 			if vineta >= len(texto_gim):
-				$AnimationPlayer.play_backwards("Entrada")
-				var ordenar_codigo_node = ordenar_codigo.instance()
-				ordenar_codigo_node.codigo_ordenado = [
+				var codigo_ordenado = [
 					"estatura=float(input())",
 					"peso=float(input())",
 					"imc=peso/(estatura**2)",
@@ -173,10 +202,10 @@ func _process(delta):
 					"else:",
 					'    print("Sobrepeso")'
 				]
-				ordenar_codigo_node.texto = "A partir de su estatura y peso, se debe determinar el IMC de una persona e indicar si está en un estado Normal, de Delgadez ode Sobrepeso.\n Utilice la siguiente clasificación como referencia:\n- Delgadez:<18.50<18.50\n- Normal:18.50−24.9918.50−24.99\n- Sobrepeso:⩾25.00\nEl problema del programa es que esta desordenado, ordenalo!"
-				ordenar_codigo_node.cantidad_maxima_saltos = 1
-				ordenar_codigo_node.mas_opciones = true
-				ordenar_codigo_node.opciones_codigo_ordenado = [[
+				var texto = "A partir de su estatura y peso, se debe determinar el IMC de una persona e indicar si está en un estado Normal, de Delgadez ode Sobrepeso.\n Utilice la siguiente clasificación como referencia:\n- Delgadez:<18.50<18.50\n- Normal:18.50−24.9918.50−24.99\n- Sobrepeso:⩾25.00\nEl problema del programa es que esta desordenado, ordenalo!"
+				var cantidad_maxima_saltos = 1
+				var mas_opciones = true
+				var opciones_codigo_ordenado = [[
 					"peso=float(input())",
 					"estatura=float(input())",
 					"imc=peso/(estatura**2)",
@@ -189,28 +218,14 @@ func _process(delta):
 					'    print("Sobrepeso")'
 				]]
 				
-				ordenar_codigo_node.connect("salir_mapa", self, "salir_mapa")
-				ordenar_codigo_node.connect("salir_menu", self, "salir_menu")
-				
-				var level0 = $".".get_node("Control")
-				var level1 = $".".get_node("AnimationPlayer")
-				$".".remove_child(level0)
-				$".".remove_child(level1)
-				level0.call_deferred("free")
-				level1.call_deferred("free")
-				
-				$".".add_child(ordenar_codigo_node)
-				
-				corriendo_problema = true
+				ordenar_codigo(codigo_ordenado, texto, cantidad_maxima_saltos, mas_opciones, opciones_codigo_ordenado)
 				
 			else:
 				$Control/Panel/Label.text = texto_gim[vineta]
 		elif problema == 2:
 			if vineta >= len(texto_tienda):
-				$AnimationPlayer.play_backwards("Entrada")
-				var encontrar_error_node = encontrar_error.instance()
-				encontrar_error_node.texto = "Hay una tienda en el campo que tiene un sistema el cual pregunta por el producto a comprar y su precio, también pregunta al cliente si desea algo más que llevar. Cuando el cliente no desea llevar nada más, el programa muestra el precio total que hay que pagar. Pero hay un error, encuéntralo!"
-				encontrar_error_node.lineas_codigo = [
+				var texto = "Hay una tienda en el campo que tiene un sistema el cual pregunta por el producto a comprar y su precio, también pregunta al cliente si desea algo más que llevar. Cuando el cliente no desea llevar nada más, el programa muestra el precio total que hay que pagar. Pero hay un error, encuéntralo!"
+				var lineas_codigo = [
 				'1. producto=input()',
 				'2. precio=int(input())',
 				"3. total=0",
@@ -227,31 +242,17 @@ func _process(delta):
 				'14.    flag=False',
 				'15.print(total)'
 				]
-				encontrar_error_node.linea_error = 8
-				encontrar_error_node.resultado_error = "SyntaxError: invalid syntax"
+				var linea_error = 8
+				var resultado_error = "SyntaxError: invalid syntax"
 				
-				encontrar_error_node.connect("salir_mapa", self, "salir_mapa")
-				encontrar_error_node.connect("salir_menu", self, "salir_menu")
-				
-				var level0 = $".".get_node("Control")
-				var level1 = $".".get_node("AnimationPlayer")
-				$".".remove_child(level0)
-				$".".remove_child(level1)
-				level0.call_deferred("free")
-				level1.call_deferred("free")
-				
-				$".".add_child(encontrar_error_node)
-				
-				corriendo_problema = true
+				encontrar_error(texto, lineas_codigo, linea_error, resultado_error)
 				
 			else:
 				$Control/Panel/Label.text = texto_tienda[vineta]
 		elif problema == 3:
 			if vineta >= len(texto_puente):
-				$AnimationPlayer.play_backwards("Entrada")
-				var encontrar_error_node = encontrar_error.instance()
-				encontrar_error_node.texto = "El puente py py es ruta más directa entre la ciudad de Pythonia y el campo. El puente tiene un sistemacontrolador,el cual identifica los vehículos terrestres con un 0 y los acuáticos con un 1 y luego levanta o baja el puente según corresponda. Además, muestra en la pantalla si el puente está subiendo o bajando. El programa consta de una función que determina si el puente se debe bajar o levantar, dependiendo del parametro ingresado. Luego pregunta el número de vehículos que pasaran por el puente para después hacer un ciclo en el cual determina si bajar o levantar el puente. Pero en el código hay un error, encuéntralo!"
-				encontrar_error_node.lineas_codigo = [
+				var texto = "El puente py py es ruta más directa entre la ciudad de Pythonia y el campo. El puente tiene un sistemacontrolador,el cual identifica los vehículos terrestres con un 0 y los acuáticos con un 1 y luego levanta o baja el puente según corresponda. Además, muestra en la pantalla si el puente está subiendo o bajando. El programa consta de una función que determina si el puente se debe bajar o levantar, dependiendo del parametro ingresado. Luego pregunta el número de vehículos que pasaran por el puente para después hacer un ciclo en el cual determina si bajar o levantar el puente. Pero en el código hay un error, encuéntralo!"
+				var lineas_codigo = [
 				"1. def levantar(tipo):",
 				"2.  if tipo==1:",
 				"3.   levantar=True",
@@ -269,22 +270,10 @@ func _process(delta):
 				'15.  print("Bajando")',
 				'16. i+=1'
 				]
-				encontrar_error_node.linea_error = 11
-				encontrar_error_node.resultado_error = "NameError"
+				var linea_error = 11
+				var resultado_error = "NameError"
 				
-				encontrar_error_node.connect("salir_mapa", self, "salir_mapa")
-				encontrar_error_node.connect("salir_menu", self, "salir_menu")
-				
-				var level0 = $".".get_node("Control")
-				var level1 = $".".get_node("AnimationPlayer")
-				$".".remove_child(level0)
-				$".".remove_child(level1)
-				level0.call_deferred("free")
-				level1.call_deferred("free")
-				
-				$".".add_child(encontrar_error_node)
-				
-				corriendo_problema = true
+				encontrar_error(texto, lineas_codigo, linea_error, resultado_error)
 				
 			else:
 				$Control/Panel/Label.text = texto_puente[vineta]
