@@ -9,7 +9,8 @@ var lineas_codigo = [
 	"5.         return y",
 	"6. num1 = 10",
 	"7. num2 = 20",
-	"8. print(mayor(num1, num2))"
+	"8. print(mayor(num1, num2))",
+	"9. 1234567890123456789012345678901234567890"
 ]
 #La variable resultado_error sería una string con lo que diría el interpretador de Python 3 al ejecutar el código
 var resultado_error = "SyntaxError: invalid syntax"

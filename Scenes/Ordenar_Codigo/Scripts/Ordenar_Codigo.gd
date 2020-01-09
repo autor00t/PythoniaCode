@@ -9,7 +9,8 @@ var codigo_ordenado = [
 	"        return y",
 	"num1 = 10",
 	"num2 = 20",
-	"print(mayor(num1, num2))" 
+	"print(mayor(num1, num2))",
+	"12345678901234567890123456789012345678901234567890" 
 ]
 #La variable texto es una string con el enunciado
 var texto = "Se tiene una función que recibe 2 parametros, de los cuales retorna el mayor. Esta función es luego aplicada en el programa para encontrar el número mayor entre 2 variables.\nPero esta desordenado el programa, ordenalo!"
@@ -28,7 +29,8 @@ var opciones_codigo_ordenado = [[
 	"        return y",
 	"num2 = 20",
 	"num1 = 10",
-	"print(mayor(num1, num2))" 
+	"print(mayor(num1, num2))",
+	"12345678901234567890123456789012345678901234567890" 
 ]]
 
 

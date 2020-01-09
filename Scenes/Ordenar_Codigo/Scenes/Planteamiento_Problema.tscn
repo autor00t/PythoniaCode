@@ -4,10 +4,6 @@
 [ext_resource path="res://Common/Fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://Common/Fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=3]
 
-
-
-
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.529412, 0.498039, 0.227451, 1 )
 
