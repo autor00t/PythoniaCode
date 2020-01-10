@@ -23,6 +23,9 @@ var vineta = 0
 var corriendo_problema = false
 
 var saved_nivel = -1
+var saved_mapa = 0
+
+signal llego_destino
 
 var texto_gasolinera = [
 	"En tu primer paso por salvar el mundo, deberás arreglar el sistema del auto que permite calcular el costo del combustible en base a tres parámetros:\n- Distancia (en km)\n- Rendimiento del auto (en km/litro)\n- Costo de un litro de combustible",
@@ -104,22 +107,22 @@ func mostrar_texto():
 		$Control/Panel/Label.text = texto_puente[0]
 
 func _ready():
-	if saved_nivel == 0:
+	if saved_nivel == 0 and saved_mapa == 0:
 		follow.set_offset(285)
 		position = 285
 		punto2 = true
-	elif saved_nivel == 1:
+	elif saved_nivel == 1 and saved_mapa == 0:
 		follow.set_offset(585)
 		position = 585
 		punto2 = true
 		punto3 = true
-	elif saved_nivel == 2:
+	elif saved_nivel == 2 and saved_mapa == 0:
 		follow.set_offset(885)
 		position = 885
 		punto2 = true
 		punto3 = true
 		punto4 = true
-	elif saved_nivel == 3:
+	elif saved_nivel == 3 and saved_mapa == 0:
 		follow.set_offset(1100)
 		position = 1100
 		punto2 = true
@@ -132,7 +135,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_pressed("ui_unlock"):
-		save_game(3)
+		save_game(0, 3)
 		punto2 = true
 		punto3 = true
 		punto4 = true
@@ -154,6 +157,9 @@ func _process(delta):
 			follow.set_offset(follow.get_offset() + 350 * delta)
 		elif retrocediendo:
 			follow.set_offset(follow.get_offset() - 350 * delta)
+		
+		if follow.get_offset() >= 1550:
+			emit_signal("llego_destino")
 		
 		$Control/numero2.visible = punto2
 		$Control/numero3.visible = punto3
@@ -324,7 +330,7 @@ func _on_Flecha2_input_event(viewport, event, shape_idx):
 		
 func salir_mapa():
 	if problema > saved_nivel:
-		save_game(problema)
+		save_game(0, problema)
 	var next_level_resource = load("res://Scenes/Mapa0/Scenes/Mapa0.tscn")
 	var next_level = next_level_resource.instance()
 	if problema > saved_nivel:
@@ -335,14 +341,14 @@ func salir_mapa():
 
 func salir_menu():
 	if problema > saved_nivel:
-		save_game(problema)
+		save_game(0, problema)
 	get_tree().change_scene("res://Scenes/Pantalla_inicio/Scenes/Pantalla_inicio.tscn")
 	
-func save_game(nivel):
+func save_game(mapa, nivel):
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
 	var temp = {
-		"mapa" : 0,
+		"mapa" : mapa,
 		"nivel": nivel
 	}
 	save_game.store_line(to_json(temp))
@@ -352,4 +358,9 @@ func save_game(nivel):
 func _on_Siguiente_Mapa_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed():
 		if siguiente_mapa:
-			queue_free()
+			position = 1577
+			yield(self, "llego_destino")
+			$AnimationPlayer.play_backwards("Entrada")
+			yield(get_node("AnimationPlayer"), "animation_finished")
+			get_tree().change_scene("res://Scenes/Mapa1/Scenes/Mapa1.tscn")
+			save_game(1, 0)
