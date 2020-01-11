@@ -367,4 +367,4 @@ func _on_Salir_mapa_pressed():
 	$AnimationPlayer.play_backwards("panel2")
 
 func _on_Salir_menu_pressed():
-	get_tree().change_scene("res://Scenes/Pantalla_inicio/Scenes/Pantalla_inicio.tscn")
+	get_tree().change_scene("res://Main.tscn")
