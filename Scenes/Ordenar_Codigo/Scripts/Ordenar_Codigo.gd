@@ -59,6 +59,11 @@ var gano
 signal salir_menu
 signal salir_mapa
 
+var puede_arriba = true
+var puede_abajo = true
+var puede_izquierda = true
+var puede_derecha = true
+
 func QuitarEspacios(linea):
 	var i = 4
 	var temp = ""
@@ -119,10 +124,10 @@ func _process(delta):
 			yield(get_tree().create_timer(1.0), "timeout")
 			gano = null
 			respuesta.get_node("Wrong_Sprite").hide()
-			$UI/Arriba.disabled = false
-			$UI/Abajo.disabled = false
-			$UI/Izquierda.disabled = false
-			$UI/Derecha.disabled = false
+			puede_arriba = false
+			puede_abajo = false
+			puede_izquierda = false
+			puede_derecha = false
 			$UI/Comprobar.disabled = false
 			
 	if desafio_resuelto:
@@ -132,28 +137,6 @@ func _process(delta):
 		if $Codigo_Ordenado.MenuPressed():
 			emit_signal("salir_menu")
 			queue_free()
-			
-func _on_Arriba_pressed():
-	if linea_seleccionada != 0:
-		linea_seleccionada -= 1
-		contenedor.move_child(botones_lineas[linea_seleccionada + 1], linea_seleccionada)
-
-
-func _on_Abajo_pressed():
-	if linea_seleccionada != codigo_desordenado.size():
-		linea_seleccionada += 1
-		contenedor.move_child(botones_lineas[linea_seleccionada - 1], linea_seleccionada)
-
-
-func _on_Izquierda_pressed():
-	if botones_lineas[linea_seleccionada].HaciaIzquierda():
-		contador_saltos[linea_seleccionada] -= 1
-
-
-func _on_Derecha_pressed():
-	if contador_saltos[linea_seleccionada] < cantidad_maxima_saltos:
-		botones_lineas[linea_seleccionada].HaciaDerecha()
-		contador_saltos[linea_seleccionada] += 1
 
 func _on_Comprobar_pressed():
 	gano = true
@@ -173,11 +156,40 @@ func _on_Comprobar_pressed():
 				gano = false
 			i += 1
 			
-	$UI/Arriba.disabled = true
-	$UI/Abajo.disabled = true
-	$UI/Izquierda.disabled = true
-	$UI/Derecha.disabled = true
+	puede_arriba = true
+	puede_abajo = true
+	puede_izquierda = true
+	puede_derecha = true
 	$UI/Comprobar.disabled = true
 
 func _on_Planteamiento_Problema_empezar():
 	$AnimationPlayer.play("Empezar")
+
+
+func _on_Arriba_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.is_pressed():
+		if puede_arriba:
+			if linea_seleccionada != 0:
+				linea_seleccionada -= 1
+				contenedor.move_child(botones_lineas[linea_seleccionada + 1], linea_seleccionada)
+
+func _on_Abajo_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.is_pressed():
+		if puede_abajo:
+			if linea_seleccionada != codigo_desordenado.size():
+				linea_seleccionada += 1
+				contenedor.move_child(botones_lineas[linea_seleccionada - 1], linea_seleccionada)
+
+
+func _on_Izquierda_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.is_pressed():
+		if puede_izquierda:
+			if botones_lineas[linea_seleccionada].HaciaIzquierda():
+				contador_saltos[linea_seleccionada] -= 1
+
+func _on_Derecha_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.is_pressed():
+		if puede_derecha:
+			if contador_saltos[linea_seleccionada] < cantidad_maxima_saltos:
+				botones_lineas[linea_seleccionada].HaciaDerecha()
+				contador_saltos[linea_seleccionada] += 1

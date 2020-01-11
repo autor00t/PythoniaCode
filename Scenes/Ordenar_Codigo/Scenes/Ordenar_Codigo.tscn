@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Ordenar_Codigo/Scripts/Ordenar_Codigo.gd" type="Script" id=1]
-[ext_resource path="res://Common/Fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
-[ext_resource path="res://Scenes/Ordenar_Codigo/Scenes/Respuesta.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Ordenar_Codigo/Scenes/Codigo_Ordenado.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Ordenar_Codigo/Scenes/Planteamiento_Problema.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Common/Textures/flecha.png" type="Texture" id=2]
+[ext_resource path="res://Common/Fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Ordenar_Codigo/Scenes/Respuesta.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Ordenar_Codigo/Scenes/Codigo_Ordenado.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Ordenar_Codigo/Scenes/Planteamiento_Problema.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.207843, 0.360784, 0.576471, 1 )
@@ -13,14 +14,25 @@ corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 52.0848, 44.4263 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 52.0848, 40.0001 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 50, 40 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 40, 40 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 45
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "Empezar"
+[sub_resource type="Animation" id=7]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Planteamiento_Problema:modulate")
@@ -59,8 +71,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Iniciar"
+[sub_resource type="Animation" id=8]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Planteamiento_Problema:modulate")
@@ -91,9 +102,9 @@ tracks/1/keys = {
 script = ExtResource( 1 )
 
 [node name="UI" type="Control" parent="."]
-modulate = Color( 0, 0, 0, 1 )
 margin_right = 720.0
 margin_bottom = 1440.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
 margin_right = 720.0
@@ -106,6 +117,7 @@ margin_left = 30.0
 margin_top = 50.0
 margin_right = 690.0
 margin_bottom = 1090.0
+mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
@@ -114,66 +126,90 @@ margin_top = 30.0
 margin_right = 630.0
 margin_bottom = 1010.0
 
-[node name="Arriba" type="Button" parent="UI"]
-margin_left = 210.0
-margin_top = 1110.0
-margin_right = 503.0
-margin_bottom = 1162.0
-custom_fonts/font = SubResource( 2 )
-text = "Hacia Arriba"
-flat = true
+[node name="Arriba" type="Area2D" parent="UI"]
+position = Vector2( 357.915, 1144.43 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Abajo" type="Button" parent="UI"]
-margin_left = 226.031
-margin_top = 1250.82
-margin_right = 494.031
-margin_bottom = 1302.82
-custom_fonts/font = SubResource( 2 )
-text = "Hacia Abajo"
-flat = true
+[node name="Sprite" type="Sprite" parent="UI/Arriba"]
+rotation = 1.5708
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+flip_h = true
 
-[node name="Izquierda" type="Button" parent="UI"]
-margin_top = 1182.0
-margin_right = 368.0
-margin_bottom = 1243.0
-custom_fonts/font = SubResource( 2 )
-text = "Hacia Izquierda"
-flat = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Arriba"]
+shape = SubResource( 2 )
 
-[node name="Derecha" type="Button" parent="UI"]
-margin_left = 391.0
-margin_top = 1174.0
-margin_right = 709.0
-margin_bottom = 1242.0
-custom_fonts/font = SubResource( 2 )
-text = "Hacia Derecha"
-flat = true
+[node name="Abajo" type="Area2D" parent="UI"]
+position = Vector2( 357.915, 1290 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="UI/Abajo"]
+rotation = 1.5708
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Abajo"]
+shape = SubResource( 3 )
+
+[node name="Izquierda" type="Area2D" parent="UI"]
+position = Vector2( 270.424, 1220 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="UI/Izquierda"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Izquierda"]
+position = Vector2( -20.4239, 0 )
+shape = SubResource( 4 )
+
+[node name="Derecha" type="Area2D" parent="UI"]
+position = Vector2( 440, 1220 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="UI/Derecha"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Derecha"]
+position = Vector2( 20, 0 )
+shape = SubResource( 5 )
 
 [node name="Comprobar" type="Button" parent="UI"]
 margin_left = 240.0
 margin_top = 1342.0
 margin_right = 480.0
 margin_bottom = 1410.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 6 )
 text = "Comprobar"
 flat = true
 
-[node name="Respuesta" parent="UI" instance=ExtResource( 3 )]
+[node name="Respuesta" parent="UI" instance=ExtResource( 4 )]
 margin_left = 380.0
 margin_top = 550.0
 margin_right = 380.0
 margin_bottom = 550.0
 
-[node name="Codigo_Ordenado" parent="." instance=ExtResource( 4 )]
+[node name="Codigo_Ordenado" parent="." instance=ExtResource( 5 )]
 
-[node name="Planteamiento_Problema" parent="." instance=ExtResource( 5 )]
+[node name="Planteamiento_Problema" parent="." instance=ExtResource( 6 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Empezar = SubResource( 3 )
-anims/Iniciar = SubResource( 4 )
-[connection signal="pressed" from="UI/Arriba" to="." method="_on_Arriba_pressed"]
-[connection signal="pressed" from="UI/Abajo" to="." method="_on_Abajo_pressed"]
-[connection signal="pressed" from="UI/Izquierda" to="." method="_on_Izquierda_pressed"]
-[connection signal="pressed" from="UI/Derecha" to="." method="_on_Derecha_pressed"]
+anims/Empezar = SubResource( 7 )
+anims/Iniciar = SubResource( 8 )
+[connection signal="input_event" from="UI/Arriba" to="." method="_on_Arriba_input_event"]
+[connection signal="input_event" from="UI/Abajo" to="." method="_on_Abajo_input_event"]
+[connection signal="input_event" from="UI/Izquierda" to="." method="_on_Izquierda_input_event"]
+[connection signal="input_event" from="UI/Derecha" to="." method="_on_Derecha_input_event"]
 [connection signal="pressed" from="UI/Comprobar" to="." method="_on_Comprobar_pressed"]
 [connection signal="empezar" from="Planteamiento_Problema" to="." method="_on_Planteamiento_Problema_empezar"]

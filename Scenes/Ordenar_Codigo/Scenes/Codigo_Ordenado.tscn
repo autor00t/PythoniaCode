@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Ordenar_Codigo/Scripts/Codigo_Ordenado.gd" type="Script" id=1]
 [ext_resource path="res://Common/Fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
-[ext_resource path="res://Common/Fonts/JAi_____.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Pantalla_inicio/Resources/button0.tres" type="StyleBox" id=3]
+[ext_resource path="res://Common/Fonts/JAi_____.TTF" type="DynamicFontData" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.12549, 0.105882, 0.462745 )
@@ -24,13 +25,13 @@ font_data = ExtResource( 2 )
 size = 50
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 50
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 
 [node name="Codigo_Ordenado" type="Control"]
 anchor_right = 1.0
@@ -66,6 +67,11 @@ margin_left = 170.0
 margin_top = 1000.0
 margin_right = 560.0
 margin_bottom = 1100.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.176471, 0.54902, 0.733333, 1 )
 text = "Salir al mapa"
@@ -75,6 +81,11 @@ margin_left = 170.0
 margin_top = 1140.0
 margin_right = 560.0
 margin_bottom = 1236.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.176471, 0.54902, 0.733333, 1 )
 text = "Salir al menu"

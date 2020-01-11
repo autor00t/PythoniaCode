@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Encontrar_Error/Scripts/Error_Encontrado.gd" type="Script" id=1]
 [ext_resource path="res://Common/Fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://Common/Fonts/JAi_____.TTF" type="DynamicFontData" id=3]
-
-
-
-
+[ext_resource path="res://Scenes/Pantalla_inicio/Resources/button0.tres" type="StyleBox" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.188235, 0.176471, 0.176471, 0.462745 )
@@ -80,6 +77,11 @@ margin_left = 140.0
 margin_top = 1000.0
 margin_right = 584.0
 margin_bottom = 1096.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.176471, 0.54902, 0.733333, 1 )
 text = "Salir al mapa"
@@ -89,6 +91,11 @@ margin_left = 140.0
 margin_top = 1140.0
 margin_right = 581.0
 margin_bottom = 1236.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.176471, 0.54902, 0.733333, 1 )
 text = "Salir al menu"
