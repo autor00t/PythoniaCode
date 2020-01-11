@@ -169,7 +169,7 @@ func _process(delta):
 					"s=float(input())",
 					"if s<=500000:",
 					"    s+=(s*0.1)",
-					"elif s<=1000000",
+					"elif s<=1000000:",
 					"    s+=(s*0.07)",
 					"else:",
 					"    s+=(s*0.05)",
