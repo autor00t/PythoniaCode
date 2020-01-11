@@ -290,7 +290,7 @@ func _on_numero4_input_event(viewport, event, shape_idx):
 
 func salir_mapa():
 	if problema > saved_nivel:
-		save_game(0, problema)
+		save_game(1, problema)
 	var next_level_resource = load("res://Scenes/Mapa1/Scenes/Mapa1.tscn")
 	var next_level = next_level_resource.instance()
 	if problema > saved_nivel:
@@ -301,8 +301,8 @@ func salir_mapa():
 
 func salir_menu():
 	if problema > saved_nivel:
-		save_game(0, problema)
-	get_tree().change_scene("res://Scenes/Pantalla_inicio/Scenes/Pantalla_inicio.tscn")
+		save_game(1, problema)
+	get_tree().change_scene("res://Main.tscn")
 	
 func save_game(mapa, nivel):
 	var save_game = File.new()
@@ -366,7 +366,5 @@ func _on_Salir_mapa_pressed():
 	seleccionado = false
 	$AnimationPlayer.play_backwards("panel2")
 
-
 func _on_Salir_menu_pressed():
 	get_tree().change_scene("res://Scenes/Pantalla_inicio/Scenes/Pantalla_inicio.tscn")
-

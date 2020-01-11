@@ -342,7 +342,7 @@ func salir_mapa():
 func salir_menu():
 	if problema > saved_nivel:
 		save_game(0, problema)
-	get_tree().change_scene("res://Scenes/Pantalla_inicio/Scenes/Pantalla_inicio.tscn")
+	get_tree().change_scene("res://Main.tscn")
 	
 func save_game(mapa, nivel):
 	var save_game = File.new()
@@ -363,4 +363,4 @@ func _on_Siguiente_Mapa_input_event(viewport, event, shape_idx):
 			$AnimationPlayer.play_backwards("Entrada")
 			yield(get_node("AnimationPlayer"), "animation_finished")
 			get_tree().change_scene("res://Scenes/Mapa1/Scenes/Mapa1.tscn")
-			save_game(1, 0)
+			save_game(1, -1)
