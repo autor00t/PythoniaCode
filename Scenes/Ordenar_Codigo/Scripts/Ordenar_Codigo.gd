@@ -33,20 +33,6 @@ var opciones_codigo_ordenado = [[
 	"12345678901234567890123456789012345678901234567890" 
 ]]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var codigo_desordenado = []
 var linea_seleccionada
 onready var contenedor = $UI/Panel/VBoxContainer
@@ -124,10 +110,10 @@ func _process(delta):
 			yield(get_tree().create_timer(1.0), "timeout")
 			gano = null
 			respuesta.get_node("Wrong_Sprite").hide()
-			puede_arriba = false
-			puede_abajo = false
-			puede_izquierda = false
-			puede_derecha = false
+			puede_arriba = true
+			puede_abajo = true
+			puede_izquierda = true
+			puede_derecha = true
 			$UI/Comprobar.disabled = false
 			
 	if desafio_resuelto:
@@ -156,10 +142,10 @@ func _on_Comprobar_pressed():
 				gano = false
 			i += 1
 			
-	puede_arriba = true
-	puede_abajo = true
-	puede_izquierda = true
-	puede_derecha = true
+	puede_arriba = false
+	puede_abajo = false
+	puede_izquierda = false
+	puede_derecha = false
 	$UI/Comprobar.disabled = true
 
 func _on_Planteamiento_Problema_empezar():
