@@ -80,7 +80,6 @@ func _process(delta):
 	if desafio_resuelto:
 		if error_encontrado.MapaPressed():
 			$AnimationPlayer.play_backwards("Iniciar")
-			queue_free()
 			emit_signal("salir_mapa")
 		if error_encontrado.MenuPressed():
 			$AnimationPlayer.play_backwards("Iniciar")

@@ -26,6 +26,8 @@ var saved_nivel = -1
 var saved_mapa = 0
 
 signal llego_destino
+signal listo
+signal volver_mapa
 
 var texto_gasolinera = [
 	"En tu primer paso por salvar el mundo, deberás arreglar el sistema del auto que permite calcular el costo del combustible en base a tres parámetros:\n- Distancia (en km)\n- Rendimiento del auto (en km/litro)\n- Costo de un litro de combustible",
@@ -107,6 +109,7 @@ func mostrar_texto():
 		$Control/Panel/Label.text = texto_puente[0]
 
 func _ready():
+	$AnimationPlayer.play("Entrada")
 	if saved_nivel == 0 and saved_mapa == 0:
 		follow.set_offset(285)
 		position = 285
@@ -122,7 +125,7 @@ func _ready():
 		punto2 = true
 		punto3 = true
 		punto4 = true
-	elif saved_nivel == 3 and saved_mapa == 0:
+	elif (saved_nivel == 3 and saved_mapa == 0) or saved_mapa == 1:
 		follow.set_offset(1100)
 		position = 1100
 		punto2 = true
@@ -131,7 +134,6 @@ func _ready():
 		siguiente_mapa = true
 		$Control/fondo_arriba.visible = false
 		$Control/fondo_abajo.visible = true
-	$AnimationPlayer.play("Entrada")
 
 func _process(delta):
 	if Input.is_action_pressed("ui_unlock"):
@@ -329,19 +331,19 @@ func _on_Flecha2_input_event(viewport, event, shape_idx):
 		anterior = true
 		
 func salir_mapa():
-	if problema > saved_nivel:
-		save_game(0, problema)
-	var next_level_resource = load("res://Scenes/Mapa0/Scenes/Mapa0.tscn")
-	var next_level = next_level_resource.instance()
-	if problema > saved_nivel:
-		next_level.saved_nivel = problema
-	else:
-		next_level.saved_nivel = saved_nivel
-	$".".add_child(next_level)
+	if problema > saved_nivel and saved_mapa == 0:
+		if problema == 3:
+			save_game(1, -1)
+		else:
+			save_game(0, problema)
+	emit_signal("volver_mapa")
 
 func salir_menu():
-	if problema > saved_nivel:
-		save_game(0, problema)
+	if problema > saved_nivel and saved_mapa == 0:
+		if problema == 3:
+			save_game(1, -1)
+		else:
+			save_game(0, problema)
 	get_tree().change_scene("res://Main.tscn")
 	
 func save_game(mapa, nivel):
@@ -362,5 +364,4 @@ func _on_Siguiente_Mapa_input_event(viewport, event, shape_idx):
 			yield(self, "llego_destino")
 			$AnimationPlayer.play_backwards("Entrada")
 			yield(get_node("AnimationPlayer"), "animation_finished")
-			get_tree().change_scene("res://Scenes/Mapa1/Scenes/Mapa1.tscn")
-			save_game(1, -1)
+			emit_signal("listo")

@@ -109,6 +109,7 @@ anims/Entrada = SubResource( 1 )
 anims/panel = SubResource( 2 )
 
 [node name="Control" type="Control" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 margin_right = 720.0
 margin_bottom = 1440.0
 mouse_filter = 2

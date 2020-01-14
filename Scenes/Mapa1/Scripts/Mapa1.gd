@@ -21,7 +21,6 @@ var problema #0 = salario, 1 = escuela, 2 = cancha, 3 = clapystel
 var seleccionado = false
 var vineta = 0
 var corriendo_problema = false
-var mapa_anterior = false
 
 var texto_salario = [
 	"Bienvenido a Pythonia, esta ciudad es la cumbre de la tecnología. Todos los programadores más conocidos mundialmente han estado aquí, eso significa que tú pronto estarás en las grandes ligas, ¡Felicidades!.",
@@ -48,6 +47,8 @@ var saved_mapa = 1
 
 signal llego_destino0
 signal llego_destino1
+signal listo
+signal volver_mapa
 
 func encontrar_error(texto, lineas_codigo, linea_error, resultado_error):
 	$AnimationPlayer.play_backwards("Entrada")
@@ -95,6 +96,7 @@ func ordenar_codigo(codigo_ordenado, texto, cantidad_maxima_saltos, mas_opciones
 	corriendo_problema = true
 
 func _ready():
+	$AnimationPlayer.play("Entrada")
 	if saved_nivel == 0 and saved_mapa == 1:
 		follow.set_offset(0)
 		position = 0
@@ -117,7 +119,6 @@ func _ready():
 		punto3 = true
 		punto4 = true
 		siguiente_mapa = true
-	$AnimationPlayer.play("Entrada")
 
 func _process(delta):
 	if Input.is_action_pressed("ui_unlock"):
@@ -144,7 +145,7 @@ func _process(delta):
 		
 		if follow.get_offset() >= 855:
 			emit_signal("llego_destino0")
-		if mapa_anterior and follow.get_offset() <= 0:
+		if follow.get_offset() <= 20:
 			emit_signal("llego_destino1")
 		
 		$Control/numero2.visible = punto2
@@ -289,18 +290,12 @@ func _on_numero4_input_event(viewport, event, shape_idx):
 			position = 756
 
 func salir_mapa():
-	if problema > saved_nivel:
+	if problema > saved_nivel and saved_mapa == 1:
 		save_game(1, problema)
-	var next_level_resource = load("res://Scenes/Mapa1/Scenes/Mapa1.tscn")
-	var next_level = next_level_resource.instance()
-	if problema > saved_nivel:
-		next_level.saved_nivel = problema
-	else:
-		next_level.saved_nivel = saved_nivel
-	$".".add_child(next_level)
+	emit_signal("volver_mapa")
 
 func salir_menu():
-	if problema > saved_nivel:
+	if problema > saved_nivel and saved_mapa == 1:
 		save_game(1, problema)
 	get_tree().change_scene("res://Main.tscn")
 	
@@ -319,17 +314,29 @@ func save_game(mapa, nivel):
 func _on_ticket_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed():
 		if not seleccionado:
-			seleccionado = true
-			var node = scene.instance()
-			add_child(node)
-			node.connect("done", self, "mostrar_texto")
 			if position == 0:
+				seleccionado = true
+				var node = scene.instance()
+				add_child(node)
+				node.connect("done", self, "mostrar_texto")
 				problema = 0
 			elif position == 386:
+				seleccionado = true
+				var node = scene.instance()
+				add_child(node)
+				node.connect("done", self, "mostrar_texto")
 				problema = 1
 			elif position == 614:
+				seleccionado = true
+				var node = scene.instance()
+				add_child(node)
+				node.connect("done", self, "mostrar_texto")
 				problema = 2
 			elif position == 756:
+				seleccionado = true
+				var node = scene.instance()
+				add_child(node)
+				node.connect("done", self, "mostrar_texto")
 				problema = 3
 #final = 861.42
 func _on_Siguiente_Mapa_input_event(viewport, event, shape_idx):
@@ -368,3 +375,12 @@ func _on_Salir_mapa_pressed():
 
 func _on_Salir_menu_pressed():
 	get_tree().change_scene("res://Main.tscn")
+
+
+func _on_Anterior_mapa_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.is_pressed():
+		position = 0
+		yield(self, "llego_destino1")
+		$AnimationPlayer.play_backwards("Entrada")
+		yield(get_node("AnimationPlayer"), "animation_finished")
+		emit_signal("listo")

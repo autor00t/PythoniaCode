@@ -119,10 +119,8 @@ func _process(delta):
 	if desafio_resuelto:
 		if $Codigo_Ordenado.MapaPressed():
 			emit_signal("salir_mapa")
-			queue_free()
 		if $Codigo_Ordenado.MenuPressed():
 			emit_signal("salir_menu")
-			queue_free()
 
 func _on_Comprobar_pressed():
 	gano = true
