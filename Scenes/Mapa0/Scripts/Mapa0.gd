@@ -137,7 +137,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_pressed("ui_unlock"):
-		save_game(0, 3)
+		save_game(1, -1)
 		punto2 = true
 		punto3 = true
 		punto4 = true
@@ -365,3 +365,14 @@ func _on_Siguiente_Mapa_input_event(viewport, event, shape_idx):
 			$AnimationPlayer.play_backwards("Entrada")
 			yield(get_node("AnimationPlayer"), "animation_finished")
 			emit_signal("listo")
+
+
+func _on_Cartel_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.is_pressed():
+		save_game(1, -1)
+		punto2 = true
+		punto3 = true
+		punto4 = true
+		siguiente_mapa = true
+		$Control/fondo_arriba.visible = false
+		$Control/fondo_abajo.visible = true

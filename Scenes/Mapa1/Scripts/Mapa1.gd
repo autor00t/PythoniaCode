@@ -384,3 +384,12 @@ func _on_Anterior_mapa_input_event(viewport, event, shape_idx):
 		$AnimationPlayer.play_backwards("Entrada")
 		yield(get_node("AnimationPlayer"), "animation_finished")
 		emit_signal("listo")
+
+
+func _on_Trampa_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.is_pressed():
+		save_game(1, 3)
+		punto2 = true
+		punto3 = true
+		punto4 = true
+		siguiente_mapa = true

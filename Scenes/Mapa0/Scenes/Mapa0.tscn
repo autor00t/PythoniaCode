@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Mapa0/Scripts/Mapa0.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Mapa0/Textures/mapa_puente_arriba.png" type="Texture" id=2]
@@ -6,15 +6,15 @@
 [ext_resource path="res://Scenes/Mapa0/Textures/tienda.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Mapa0/Textures/gimnasio.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Mapa0/Textures/gasolinera.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/Mapa0/Textures/cartel.png" type="Texture" id=7]
-[ext_resource path="res://Common/Textures/flecha.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/Mapa0/Textures/1.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Mapa0/Textures/2.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/Mapa0/Textures/3.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/Mapa0/Textures/4.png" type="Texture" id=12]
-[ext_resource path="res://Common/Textures/Correcto.png" type="Texture" id=13]
-[ext_resource path="res://Scenes/Mapa0/Textures/auto_azul.png" type="Texture" id=14]
-[ext_resource path="res://Common/Fonts/JAi_____.TTF" type="DynamicFontData" id=15]
+[ext_resource path="res://Common/Textures/flecha.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Mapa0/Textures/1.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Mapa0/Textures/2.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Mapa0/Textures/3.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Mapa0/Textures/4.png" type="Texture" id=11]
+[ext_resource path="res://Common/Textures/Correcto.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Mapa0/Textures/auto_azul.png" type="Texture" id=13]
+[ext_resource path="res://Common/Fonts/JAi_____.TTF" type="DynamicFontData" id=14]
+[ext_resource path="res://Scenes/Mapa0/Textures/cartel.png" type="Texture" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Entrada"
@@ -96,10 +96,13 @@ size = 40
 outline_size = 6
 outline_color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 use_filter = true
-font_data = ExtResource( 15 )
+font_data = ExtResource( 14 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 130, 100 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 160, 110 )
 
 [node name="Mapa0" type="Node"]
 script = ExtResource( 1 )
@@ -109,7 +112,6 @@ anims/Entrada = SubResource( 1 )
 anims/panel = SubResource( 2 )
 
 [node name="Control" type="Control" parent="."]
-modulate = Color( 0, 0, 0, 1 )
 margin_right = 720.0
 margin_bottom = 1440.0
 mouse_filter = 2
@@ -158,14 +160,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="cartel" type="Sprite" parent="Control"]
-position = Vector2( 520, 150 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Siguiente_Mapa" type="Area2D" parent="Control"]
 position = Vector2( 60, 310 )
 __meta__ = {
@@ -175,7 +169,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Control/Siguiente_Mapa"]
 position = Vector2( 3.8147e-006, 3.05176e-005 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Siguiente_Mapa"]
@@ -190,7 +184,7 @@ __meta__ = {
 [node name="numero" type="Sprite" parent="Control/numero1"]
 position = Vector2( -220, -110 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -211,7 +205,7 @@ __meta__ = {
 [node name="numero" type="Sprite" parent="Control/numero2"]
 position = Vector2( -20, 10 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -232,7 +226,7 @@ __meta__ = {
 [node name="numero" type="Sprite" parent="Control/numero3"]
 position = Vector2( -20, 10 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -253,7 +247,7 @@ __meta__ = {
 [node name="numero" type="Sprite" parent="Control/numero4"]
 position = Vector2( 50, -60 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -273,7 +267,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Control/ticket"]
 scale = Vector2( 10, 10 )
-texture = ExtResource( 13 )
+texture = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -301,7 +295,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Control/Recorrido/PathFollow2D"]
 position = Vector2( 0, 10 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 14 )
+texture = ExtResource( 13 )
 flip_v = true
 __meta__ = {
 "_edit_lock_": true
@@ -342,7 +336,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Control/Panel/Flecha"]
 position = Vector2( 0, 6.10352e-005 )
 scale = Vector2( 7, 7 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -363,7 +357,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Control/Panel/Flecha2"]
 position = Vector2( 0, 6.10352e-005 )
 scale = Vector2( 7, 7 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 flip_h = true
 __meta__ = {
 "_edit_lock_": true
@@ -374,6 +368,20 @@ shape = SubResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Cartel" type="Area2D" parent="Control"]
+position = Vector2( 520, 150 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="cartel" type="Sprite" parent="Control/Cartel"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Cartel"]
+shape = SubResource( 13 )
 [connection signal="input_event" from="Control/Siguiente_Mapa" to="." method="_on_Siguiente_Mapa_input_event"]
 [connection signal="input_event" from="Control/numero1" to="." method="_on_numero1_input_event"]
 [connection signal="input_event" from="Control/numero2" to="." method="_on_numero2_input_event"]
@@ -382,3 +390,4 @@ __meta__ = {
 [connection signal="input_event" from="Control/ticket" to="." method="_on_ticket_input_event"]
 [connection signal="input_event" from="Control/Panel/Flecha" to="." method="_on_Flecha_input_event"]
 [connection signal="input_event" from="Control/Panel/Flecha2" to="." method="_on_Flecha2_input_event"]
+[connection signal="input_event" from="Control/Cartel" to="." method="_on_Cartel_input_event"]

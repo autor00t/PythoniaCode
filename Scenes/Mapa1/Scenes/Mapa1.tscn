@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scenes/Mapa1/Scripts/Mapa1.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Mapa1/Textures/fondo.png" type="Texture" id=2]
@@ -142,6 +142,9 @@ size = 60
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 14 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 110, 60 )
 
 [node name="Mapa1" type="Node"]
 script = ExtResource( 1 )
@@ -432,6 +435,16 @@ custom_styles/disabled = ExtResource( 15 )
 custom_styles/normal = ExtResource( 15 )
 custom_fonts/font = SubResource( 16 )
 text = "Salir al menu"
+
+[node name="Trampa" type="Area2D" parent="Control"]
+position = Vector2( 110, 60 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Trampa"]
+shape = SubResource( 17 )
 [connection signal="input_event" from="Control/numero1" to="." method="_on_numero1_input_event"]
 [connection signal="input_event" from="Control/numero2" to="." method="_on_numero2_input_event"]
 [connection signal="input_event" from="Control/numero3" to="." method="_on_numero3_input_event"]
@@ -443,3 +456,4 @@ text = "Salir al menu"
 [connection signal="input_event" from="Control/Panel/Flecha2" to="." method="_on_Flecha2_input_event"]
 [connection signal="pressed" from="Control/Panel2/Salir_mapa" to="." method="_on_Salir_mapa_pressed"]
 [connection signal="pressed" from="Control/Panel2/Salir_menu" to="." method="_on_Salir_menu_pressed"]
+[connection signal="input_event" from="Control/Trampa" to="." method="_on_Trampa_input_event"]

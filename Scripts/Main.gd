@@ -27,10 +27,30 @@ func Mapa1_listo():
 	cambiar_nodo(original, nuevo)
 
 func volver_Mapa0():
-	load_game("Mapa0")
+	var datos = load_datos()
+	if datos[0] == 0:
+		load_game("Mapa0")
+	else:
+		var original = "Mapa0"
+		var next_level_resource = load("res://Scenes/Mapa0/Scenes/Mapa0.tscn")
+		var nuevo = next_level_resource.instance()
+		nuevo.connect("volver_mapa", self, "volver_Mapa0")
+		nuevo.connect("listo", self, "Mapa1_listo")
+		nuevo.saved_mapa = datos[0]
+		cambiar_nodo(original, nuevo)
 
 func volver_Mapa1():
-	load_game("Mapa1")
+	var datos = load_datos()
+	if datos[0] == 1:
+		load_game("Mapa1")
+	else:
+		var original = "Mapa1"
+		var next_level_resource = load("res://Scenes/Mapa1/Scenes/Mapa1.tscn")
+		var nuevo = next_level_resource.instance()
+		nuevo.connect("volver_mapa", self, "volver_Mapa1")
+		nuevo.connect("listo", self, "Mapa1_listo")
+		nuevo.saved_mapa = datos[0]
+		cambiar_nodo(original, nuevo)
 
 func _on_Pantalla_inicio_nuevaPartida():
 	var original = "Pantalla_inicio"
@@ -77,4 +97,17 @@ func load_game(original):
 				nuevo.connect("listo", self, "Mapa1_listo")
 				nuevo.connect("volver_mapa", self, "volver_Mapa1")
 				cambiar_nodo(original, nuevo)
+	save_game.close()
+
+func load_datos():
+	var save_game = File.new()
+	if not save_game.file_exists("user://savegame.save"):
+		return
+	
+	save_game.open("user://savegame.save", File.READ)
+	while not save_game.eof_reached():
+		var current_line = parse_json(save_game.get_line())
+		if current_line != null:
+			return [current_line["mapa"], current_line["nivel"]]
+			
 	save_game.close()
